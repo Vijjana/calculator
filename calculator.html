@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>calculator</title>
+        <style>
+            h1{
+                text-align:center;
+                 color:teal;
+                 font-size:67px;
+            }
+            #main{
+                height:400px;
+                width:400px;
+            
+                margin:auto;
+                box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+            }
+            #display{
+                height:50px;
+                width:100%;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+                margin-bottom:18px;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                
+            }
+            #keyboard{
+                display:grid;
+                grid-template-columns:repeat(4,1fr);
+                grid-template-rows:repeat(4,67px);
+                row-gap: 20px;
+                column-gap:15px;
+                margin-right:13px;
+                margin-left:13px;
+                
+            }
+            
+            
+            #keyboard > div{
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            }
+            .black{
+                background-color: black;
+                color:white;
+            }
+            .red{
+                background-color:red;
+                color:white;
+            }
+            #keyboard > div:hover{
+                background-color:teal;
+                cursor:pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Calculator</h1>
+        <div id = "main">
+            <div id = "display"></div>
+                <div id = "keyboard">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div class = "black">+</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                    <div class = "black">-</div>
+                    <div>7</div>
+                    <div>8</div>
+                    <div>9</div>
+                    <div class = "black">*</div>
+                    <div class = "red">c</div>
+                    <div>0</div>
+                    <div class = "black" >/</div>
+                    <div class = "black">=</div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    let keys = document.querySelectorAll("#keyboard > div");
+    let bag = "";
+   console.log(keys);
+   for(let i=0;i<=keys.length-1;i++)
+   {
+    keys[i].addEventListener("click",cal)
+   }
+   function cal()
+   {
+    let targetKey = event.target.innerText
+    if(targetKey == "c")
+    {
+        bag = "";
+        document.querySelector("#display").innerText = "";
+    }
+    else if(targetKey == "=")
+    {
+        bag = eval(bag);
+        document.querySelector("#display").innerText = eval(bag);
+    }
+    else
+    {
+        bag = bag+targetKey;
+        document.querySelector("#display").innerText = bag;
+    }
+}
+
+</script>
